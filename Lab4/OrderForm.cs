@@ -32,7 +32,7 @@ namespace Lab4
             DisplayOrderDetails(Id);
         }
 
-
+        // 
         private void orderIDComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (order != null)
@@ -89,8 +89,11 @@ namespace Lab4
         // setting Id and order after selecting something from the combo box
         private void GetID()
         {
-            order = (Order)orderIDComboBox.SelectedItem;
-            Id = order.OrderID;
+            if (orderIDComboBox.SelectedItem != null)
+            {
+                order = (Order)orderIDComboBox.SelectedItem;
+                Id = order.OrderID;
+            }            
         }  
 
 
@@ -121,7 +124,7 @@ namespace Lab4
             {
                 this.order = UpdFrm.order;
                 orderIDComboBox.SelectedItem = order;
-                //DisplayOrders();
+                DisplayOrders();
                 GetID();
                 DisplayOrderDetails(Id);
             }

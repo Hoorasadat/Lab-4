@@ -54,7 +54,8 @@ namespace Lab4
             if (IsValidData(DTPShippedDate))
             {
                 Order newOrder = new Order();
-                newOrder = order;
+                GetNewOrder(newOrder);
+
                 newOrder.ShippedDate = Convert.ToDateTime(DTPShippedDate.Value);
 
                 try
@@ -78,6 +79,14 @@ namespace Lab4
             }
         }
 
+        private void GetNewOrder(Order newOrder)
+        {
+            newOrder.OrderID = order.OrderID;
+            newOrder.CustomerID = order.CustomerID;
+            newOrder.OrderDate = order.OrderDate;
+            newOrder.RequiredDate = order.RequiredDate;
+            newOrder.ShippedDate = order.ShippedDate;
+        }
 
         private bool IsValidData(DateTimePicker dtp)
         {
