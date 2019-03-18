@@ -43,9 +43,9 @@ namespace Lab4
         {
             txtOrderId.Text = order.OrderID.ToString();
             txtCustomerId.Text = order.CustomerID.ToString();
-            txtOrderDate.Text = order.OrderDate.ToString();
-            txtRequiredDate.Text = order.RequiredDate.ToString();
-            DTPShippedDate.Text = order.ShippedDate.ToString();
+            txtOrderDate.Text = order.OrderDate?.ToString("yyyy-MM-dd");
+            txtRequiredDate.Text = order.RequiredDate?.ToString("yyyy-MM-dd");
+            DTPShippedDate.Text = order.ShippedDate?.ToString();
         }
 
 
