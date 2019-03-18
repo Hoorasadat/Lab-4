@@ -222,7 +222,12 @@ namespace DataAccessClasses
             SqlCommand cmnd = new SqlCommand(UpdateQuery, con);
 
             // adding the input parameter for running the command (Order ID) to it
-            cmnd.Parameters.AddWithValue("@NewShippedDate", newOrder.ShippedDate);
+            if (newOrder.ShippedDate == null)
+                cmnd.Parameters.AddWithValue("@NewShippedDate", DBNull.Value);
+            else
+                cmnd.Parameters.AddWithValue("@NewShippedDate", newOrder.ShippedDate);
+
+
             cmnd.Parameters.AddWithValue("@OldOrderId", oldOrder.OrderID);
             cmnd.Parameters.AddWithValue("@OldShippedDate", oldOrder.ShippedDate);
 
@@ -247,5 +252,7 @@ namespace DataAccessClasses
             }
             return result;
         }
+
+
     }
 }

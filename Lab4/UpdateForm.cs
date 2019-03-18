@@ -15,6 +15,7 @@ namespace Lab4
     public partial class UpdateForm : Form
     {
         public Order order;
+        bool delete = false;
 
         public UpdateForm()
         {
@@ -49,14 +50,17 @@ namespace Lab4
         }
 
 
-        private void btnAccept_Click(object sender, EventArgs e)
-        {            
-            if (IsValidData(DTPShippedDate))
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if (IsValidData(DTPShippedDate) || (DTPShippedDate.Value == null))
             {
                 Order newOrder = new Order();
                 GetNewOrder(newOrder);
 
-                newOrder.ShippedDate = Convert.ToDateTime(DTPShippedDate.Value);
+                if (delete == true)
+                    newOrder.ShippedDate = null;
+                else
+                    newOrder.ShippedDate = Convert.ToDateTime(DTPShippedDate.Value);
 
                 try
                 {
@@ -79,6 +83,7 @@ namespace Lab4
             }
         }
 
+
         private void GetNewOrder(Order newOrder)
         {
             newOrder.OrderID = order.OrderID;
@@ -88,13 +93,13 @@ namespace Lab4
             newOrder.ShippedDate = order.ShippedDate;
         }
 
+
         private bool IsValidData(DateTimePicker dtp)
         {
             DateTime ordDate = Convert.ToDateTime(txtOrderDate.Text);
             DateTime ReqDate = Convert.ToDateTime(txtRequiredDate.Text);
 
-            if (Validators.IsProvided(DTPShippedDate) &&
-                Validators.IsWithinRange(DTPShippedDate, ordDate, ReqDate))
+            if (Validators.IsWithinRange(DTPShippedDate, ordDate, ReqDate))
                 return true;
             return false;
         }
@@ -105,5 +110,12 @@ namespace Lab4
             Close();
         }
 
+                
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            delete = true;
+            MessageBox.Show("You just deleted the shipped date.");
+            DTPShippedDate.Enabled = false;
+        }
     }
 }

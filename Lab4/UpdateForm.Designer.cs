@@ -33,13 +33,14 @@
             System.Windows.Forms.Label orderIDLabel;
             System.Windows.Forms.Label requiredDateLabel;
             System.Windows.Forms.Label shippedDateLabel;
-            this.btnAccept = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtOrderId = new System.Windows.Forms.TextBox();
             this.txtRequiredDate = new System.Windows.Forms.TextBox();
             this.txtOrderDate = new System.Windows.Forms.TextBox();
             this.txtCustomerId = new System.Windows.Forms.TextBox();
             this.DTPShippedDate = new System.Windows.Forms.DateTimePicker();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             customerIDLabel = new System.Windows.Forms.Label();
             orderDateLabel = new System.Windows.Forms.Label();
             orderIDLabel = new System.Windows.Forms.Label();
@@ -92,19 +93,19 @@
             shippedDateLabel.TabIndex = 20;
             shippedDateLabel.Text = "Shipped Date:";
             // 
-            // btnAccept
+            // btnConfirm
             // 
-            this.btnAccept.Location = new System.Drawing.Point(182, 179);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(75, 23);
-            this.btnAccept.TabIndex = 11;
-            this.btnAccept.Text = "&Accept";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            this.btnConfirm.Location = new System.Drawing.Point(182, 208);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirm.TabIndex = 11;
+            this.btnConfirm.Text = "&Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(12, 179);
+            this.btnCancel.Location = new System.Drawing.Point(182, 179);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 12;
@@ -151,11 +152,23 @@
             this.DTPShippedDate.Size = new System.Drawing.Size(149, 20);
             this.DTPShippedDate.TabIndex = 25;
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(15, 195);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(108, 17);
+            this.checkBox2.TabIndex = 28;
+            this.checkBox2.Text = "No Shipped Date";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // UpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(277, 232);
+            this.ClientSize = new System.Drawing.Size(277, 242);
+            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.DTPShippedDate);
             this.Controls.Add(this.txtCustomerId);
             this.Controls.Add(this.txtOrderDate);
@@ -167,7 +180,7 @@
             this.Controls.Add(requiredDateLabel);
             this.Controls.Add(shippedDateLabel);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnAccept);
+            this.Controls.Add(this.btnConfirm);
             this.Name = "UpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateForm";
@@ -178,12 +191,13 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtOrderId;
         private System.Windows.Forms.TextBox txtRequiredDate;
         private System.Windows.Forms.TextBox txtOrderDate;
         private System.Windows.Forms.TextBox txtCustomerId;
         private System.Windows.Forms.DateTimePicker DTPShippedDate;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
