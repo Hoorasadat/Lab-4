@@ -96,11 +96,18 @@ namespace Lab4
 
         private bool IsValidData(DateTimePicker dtp)
         {
-            DateTime ordDate = Convert.ToDateTime(txtOrderDate.Text);
-            DateTime ReqDate = Convert.ToDateTime(txtRequiredDate.Text);
+            if (txtOrderDate.Text != "" && txtRequiredDate.Text != "")
+            {
+                DateTime ordDate = Convert.ToDateTime(txtOrderDate.Text);
+                DateTime ReqDate = Convert.ToDateTime(txtRequiredDate.Text);
 
-            if (Validators.IsWithinRange(DTPShippedDate, ordDate, ReqDate))
-                return true;
+                if (Validators.IsWithinRange(DTPShippedDate, ordDate, ReqDate))
+                    return true;
+            }
+            else
+                MessageBox.Show("Before being able to edit the shipped date, you need to have both order date and required date.\n" +
+                    "Contact your administrator.");
+            
             return false;
         }
 
