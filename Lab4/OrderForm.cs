@@ -14,16 +14,18 @@ namespace Lab4
 {
     public partial class OrderForm : Form
     {
+        // declaring the current order (private and not accessible from the second form) and its Id
         private Order order;
         private int Id;
 
-
+        
         public OrderForm()
         {
             InitializeComponent();
         }
 
-
+        // when the form loads, it should show all orders in the combo box(and also the grid view)
+        // and the details for the first order in the database inside the bottom table
         private void OrderForm_Load(object sender, EventArgs e)
         {
             DisplayOrders();
@@ -32,7 +34,7 @@ namespace Lab4
             DisplayOrderDetails(Id);
         }
 
-        
+        // whenever the combo box is changed show the related details
         private void orderIDComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (order != null)
@@ -114,32 +116,43 @@ namespace Lab4
         }
 
 
+        // whenever the edit button is clicked, another form should be opened
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            
+            // creating an object of the form
             UpdateForm UpdFrm = new UpdateForm();
+
+            // passing the current order to the second form
             UpdFrm.order = this.order;
+
+            // opening the form
             DialogResult Rst = UpdFrm.ShowDialog();
+
+            // check if the user clicked confirm button in the second form
             if (Rst == DialogResult.OK)
             {
+                // passing the edited order to the first form and
+                // setting up the first form to show the proper data
                 this.order = UpdFrm.order;
                 orderIDComboBox.SelectedItem = order;
                 DisplayOrders();
                 GetID();
                 DisplayOrderDetails(Id);
             }
+            // if the user cancel the edit process
             else if (Rst == DialogResult.Retry)
             {
                 // to check if the current order is still in the database
                 if (GetOrder(order.OrderID) != null)
                 {
+                    // setting up the first form to show the proper data
                     orderIDComboBox.SelectedItem = order;
-                    //DisplayOrders();
                     GetID();
                     DisplayOrderDetails(Id);
                 }
                 else
                 {
+                    // setting up the first form to show the data for the first order
                     DisplayOrders();
                     DisplayOrderDetails(10248);
                 }
@@ -147,6 +160,7 @@ namespace Lab4
         }
 
 
+        // closing the app
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();

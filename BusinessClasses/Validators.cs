@@ -7,8 +7,10 @@ using System.Windows.Forms;
 
 namespace BusinessClasses
 {
+    // a class for having different validator methods
     public static class Validators
     {
+        // check if the data is provided by the user or not
         public static bool IsProvided(Control ctr)
         {
             bool result = true;
@@ -38,7 +40,7 @@ namespace BusinessClasses
         }
 
 
-
+        // check if the data is a decimal number
         public static bool IsDecimal(TextBox txt)
         {
             bool result = true;
@@ -57,7 +59,7 @@ namespace BusinessClasses
         }
 
 
-
+        // check if the data is an integer number
         public static bool IsInteger(TextBox txt)
         {
             bool result = true;
@@ -76,7 +78,7 @@ namespace BusinessClasses
         }
 
 
-
+        // check if the data is in a specific range
         public static bool IsWithinRange(DateTimePicker dtp, DateTime min, DateTime max)
         {
             bool accept = true;

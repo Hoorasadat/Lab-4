@@ -9,6 +9,7 @@ namespace DataAccessClasses
 {
     public class NorthwindDB
     {
+        // a data access class for connecting to the database
         public static SqlConnection GetConnection()
         {
             string ConnectionString = @"Data Source=localhost\sqlexpress;Initial Catalog=Northwind;Integrated Security=True";

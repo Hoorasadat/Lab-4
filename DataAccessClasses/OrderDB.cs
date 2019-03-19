@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessClasses
 {
+    // a class to deal with the data for orders in the database
     public static class OrderDB
     {
         // a method to get a list of orders from the database:
@@ -256,7 +257,6 @@ namespace DataAccessClasses
             }
             return result;
         }
-
-
+        
     }
 }

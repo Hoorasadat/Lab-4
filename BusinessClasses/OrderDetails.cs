@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace BusinessClasses
 {
+    // a class for creating order details objects
+    
     public class OrderDetails
     {
+        // we only need properties
+
         public int OrderID { get; set; }
 
         public int ProductID { get; set; }

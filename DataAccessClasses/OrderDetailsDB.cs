@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessClasses
 {
+    // a class to deal with the data for orders details in the database
     public static class OrderDetailsDB
     {
         // a method to get a list of order details for a specific order (order ID) from the database:
@@ -70,8 +71,7 @@ namespace DataAccessClasses
             return OrderDetails;
         }
 
-
-
+        
         // a method to calculate the order total for a specific order (order ID) from the order details:
         public static decimal CalOrdTotal(int orderID)
         {
