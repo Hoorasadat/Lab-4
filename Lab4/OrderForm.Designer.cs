@@ -35,6 +35,9 @@
             System.Windows.Forms.Label requiredDateLabel;
             System.Windows.Forms.Label shippedDateLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.orderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -61,13 +64,13 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.orderDataGridView = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
             customerIDLabel = new System.Windows.Forms.Label();
             orderDateLabel = new System.Windows.Forms.Label();
             orderIDLabel = new System.Windows.Forms.Label();
@@ -149,7 +152,7 @@
             this.orderBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.orderBindingNavigator.Name = "orderBindingNavigator";
             this.orderBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.orderBindingNavigator.Size = new System.Drawing.Size(913, 25);
+            this.orderBindingNavigator.Size = new System.Drawing.Size(801, 25);
             this.orderBindingNavigator.TabIndex = 0;
             this.orderBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -235,7 +238,7 @@
             // 
             // orderDateTextBox
             // 
-            this.orderDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "OrderDate", true));
+            this.orderDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "OrderDate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
             this.orderDateTextBox.Enabled = false;
             this.orderDateTextBox.Location = new System.Drawing.Point(92, 113);
             this.orderDateTextBox.Name = "orderDateTextBox";
@@ -258,7 +261,7 @@
             // 
             // requiredDateTextBox
             // 
-            this.requiredDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "RequiredDate", true));
+            this.requiredDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "RequiredDate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
             this.requiredDateTextBox.Enabled = false;
             this.requiredDateTextBox.Location = new System.Drawing.Point(92, 140);
             this.requiredDateTextBox.Name = "requiredDateTextBox";
@@ -267,7 +270,7 @@
             // 
             // shippedDateTextBox
             // 
-            this.shippedDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "ShippedDate", true));
+            this.shippedDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "ShippedDate", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d"));
             this.shippedDateTextBox.Enabled = false;
             this.shippedDateTextBox.Location = new System.Drawing.Point(92, 166);
             this.shippedDateTextBox.Name = "shippedDateTextBox";
@@ -288,7 +291,7 @@
             this.dataGridViewTextBoxColumn5});
             this.orderDetailsDataGridView.DataSource = this.orderDetailsBindingSource;
             this.orderDetailsDataGridView.Enabled = false;
-            this.orderDetailsDataGridView.Location = new System.Drawing.Point(26, 285);
+            this.orderDetailsDataGridView.Location = new System.Drawing.Point(10, 285);
             this.orderDetailsDataGridView.Name = "orderDetailsDataGridView";
             this.orderDetailsDataGridView.ReadOnly = true;
             this.orderDetailsDataGridView.Size = new System.Drawing.Size(544, 220);
@@ -366,11 +369,32 @@
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10});
             this.orderDataGridView.DataSource = this.orderBindingSource;
-            this.orderDataGridView.Location = new System.Drawing.Point(250, 42);
+            this.orderDataGridView.Location = new System.Drawing.Point(228, 60);
             this.orderDataGridView.Name = "orderDataGridView";
             this.orderDataGridView.ReadOnly = true;
-            this.orderDataGridView.Size = new System.Drawing.Size(561, 220);
+            this.orderDataGridView.Size = new System.Drawing.Size(561, 202);
             this.orderDataGridView.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(7, 204);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 15);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Order Total:";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTotal.Location = new System.Drawing.Point(113, 198);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(100, 26);
+            this.txtTotal.TabIndex = 17;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -389,6 +413,9 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "OrderDate";
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn8.HeaderText = "OrderDate";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -396,6 +423,9 @@
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.DataPropertyName = "RequiredDate";
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn9.HeaderText = "RequiredDate";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
@@ -403,36 +433,18 @@
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.DataPropertyName = "ShippedDate";
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn10.HeaderText = "ShippedDate";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(597, 304);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 20);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Order Total:";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.txtTotal.Enabled = false;
-            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.txtTotal.Location = new System.Drawing.Point(601, 356);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(100, 26);
-            this.txtTotal.TabIndex = 17;
             // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 507);
+            this.ClientSize = new System.Drawing.Size(801, 507);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.orderDataGridView);
@@ -493,13 +505,13 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridView orderDataGridView;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtTotal;
     }
 }
 

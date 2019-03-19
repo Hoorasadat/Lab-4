@@ -114,7 +114,8 @@ namespace Lab4
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             delete = true;
-            MessageBox.Show("You just deleted the shipped date.");
+            MessageBox.Show("You just deleted the shipped date. \n" +
+                "If you are sure, continue with confirm button.");
             DTPShippedDate.Enabled = false;
         }
     }

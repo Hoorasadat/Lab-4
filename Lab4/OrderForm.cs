@@ -32,7 +32,7 @@ namespace Lab4
             DisplayOrderDetails(Id);
         }
 
-        // 
+        
         private void orderIDComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (order != null)

@@ -216,7 +216,7 @@ namespace DataAccessClasses
                 // to identify record to update
                 "WHERE OrderID = @OldOrderId " +
                 // remaining conditions for optimistic concurrency
-                "AND ShippedDate = @OldShippedDate";
+                "AND (ShippedDate = @OldShippedDate OR ShippedDate IS NULL AND @OldShippedDate IS NULL)";
 
             // creating the proper command to run the query
             SqlCommand cmnd = new SqlCommand(UpdateQuery, con);
@@ -229,7 +229,11 @@ namespace DataAccessClasses
 
 
             cmnd.Parameters.AddWithValue("@OldOrderId", oldOrder.OrderID);
-            cmnd.Parameters.AddWithValue("@OldShippedDate", oldOrder.ShippedDate);
+
+            if (oldOrder.ShippedDate == null)
+                cmnd.Parameters.AddWithValue("@OldShippedDate", DBNull.Value);
+            else
+                cmnd.Parameters.AddWithValue("@OldShippedDate", oldOrder.ShippedDate);
 
             // try to run the command
             try
